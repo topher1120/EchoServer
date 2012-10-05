@@ -1,0 +1,18 @@
+apply plugin: 'war'
+apply plugin: 'eclipse'
+
+buildDir = 'target'
+
+repositories{
+    mavenCentral()
+}
+
+dependencies{
+    compile 'org.springframework:spring-web:3.1.2.RELEASE'
+    compile 'com.sun.jersey.contribs:jersey-spring:1.14'
+    compile 'com.sun.jersey:jersey-servlet:1.14'
+    compile 'com.sun.jersey:jersey-server:1.14'
+    compile 'com.sun.jersey:jersey-core:1.14'
+    runtime 'ch.qos.logback:logback-core:1.0.7'
+    compile 'org.slf4j:slf4j-api:1.7.1'
+}
