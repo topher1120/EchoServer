@@ -1,9 +1,9 @@
-apply plugin: 'war'
+apply plugin: 'java'
 apply plugin: 'eclipse'
 
-buildDir = 'target'
+//buildDir = 'target'
 
-mainClassName = "com.cmware.ws.HerokuStart"
+mainClassName = "com.cmware.ws.HerokuStart2"
 applicationName = "echoServer"
 
 repositories{
@@ -12,6 +12,12 @@ repositories{
 
 configurations{
     heroku
+}
+
+jar{
+    manifest {
+        attributes("Main-Class": mainClassName)
+    }
 }
 
 dependencies{
@@ -25,18 +31,11 @@ dependencies{
     
     //dependencies to run the app on Heroku
     heroku "org.mortbay.jetty:jetty-runner:8.1.7.v20120910"
+    compile "org.apache.tomcat.embed:tomcat-embed-core:7.0.30"
+    compile "org.apache.tomcat.embed:tomcat-embed-logging-juli:7.0.30"
+    compile "org.apache.tomcat.embed:tomcat-embed-jasper:7.0.30"
+    
+    
 }
 
-task copyHerokuDeps(dependsOn: assemble){
-    def herokuPath = new File(buildDir, "heroku")
-    configurations.heroku.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-        project.copy{
-            from artifact.file
-            into herokuPath
-            rename { "${artifact.name}.${artifact.extension}"}
-        }
-    }
-}
-
-
-task stage(dependsOn: copyHerokuDeps)
+task stage(dependsOn: assemble)
