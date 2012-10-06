@@ -38,4 +38,10 @@ dependencies{
     
 }
 
-task stage(dependsOn: assemble)
+task stage(dependsOn: assemble){
+    File lDir = file(libsDir)
+    FileCollection collection = files(lDir.listFiles())
+    collection.each { File file ->
+        println "File: ${file.name}"
+    }
+}
