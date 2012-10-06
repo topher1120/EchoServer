@@ -26,8 +26,9 @@ public class EchoResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String echo(@QueryParam("value") String value) {
         currentRequests.incrementAndGet();
+        // for testing, delay response for 1 second.
         try {
-            Thread.sleep(4000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
 
         }
