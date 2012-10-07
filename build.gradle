@@ -28,7 +28,6 @@ dependencies{
     compile 'com.sun.jersey:jersey-core:1.14'
     compile 'com.sun.jersey:jersey-json:1.14'
     compile 'ch.qos.logback:logback-classic:1.0.7'
-    //compile 'org.json:json:20090211'
     
     //dependencies to run the app on Heroku
     //heroku "org.mortbay.jetty:jetty-runner:8.1.7.v20120910"
